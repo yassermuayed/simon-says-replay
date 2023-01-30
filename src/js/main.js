@@ -54,11 +54,15 @@ hideScreen(_homeScreen)
 readyToLunch()
 
 
+_green.src = greenpURL;
+_blue.src = bluepURL;
+_red.src = redpURL;
+_yellow.src = yellowpURL;
 
-_green.src = greenURL;
-_blue.src = blueURL;
-_red.src = redURL;
-_yellow.src = yellowURL;
+// _green.src = greenURL;
+// _blue.src = blueURL;
+// _red.src = redURL;
+// _yellow.src = yellowURL;
 
 function changeState(state) {
 
@@ -148,10 +152,7 @@ function hideScreen(screen) {
 }
 
 function readyToLunch() {
-    _green.src = greenpURL;
-    _blue.src = bluepURL;
-    _red.src = redpURL;
-    _yellow.src = yellowpURL;
+  
     loadingTimeOut = setTimeout(() => {
         changeState('home')
     }, 5000);
