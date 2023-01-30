@@ -53,13 +53,11 @@ hideScreen(_gameScreen)
 hideScreen(_homeScreen)
 readyToLunch()
 
-_green.src = greenpURL;
+
+
 _green.src = greenURL;
-_blue.src = bluepURL;
 _blue.src = blueURL;
-_red.src = redpURL;
 _red.src = redURL;
-_yellow.src = yellowpURL;
 _yellow.src = yellowURL;
 
 function changeState(state) {
