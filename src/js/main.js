@@ -1,3 +1,4 @@
+console.log("js working")
 const _splashScreen = document.querySelector('.splash-screen');
 const _homeScreen = document.querySelector('.home-screen');
 const _gameScreen = document.querySelector('.game-screen');
