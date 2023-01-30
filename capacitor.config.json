@@ -1,0 +1,11 @@
+{
+  "appId": "com.yassermuayed.ssr",
+  "appName": "ssr-v1",
+  "bundledWebRuntime": false,
+  "webDir": "dist",
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 0
+    }
+  }
+}

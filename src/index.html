@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="./assets/icon/favicon.ico" />
+    <link rel="manifest" href="./manifest.json" />
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Simon Says Replay</title>
+</head>
+
+<body>
+    <div class="root">
+        <div class="screen">
+            <!-- SPLASH -->
+            <div class="splash-screen  center ">
+                <div class="version-note">v0.1 build vite 1</div>
+                <img class="logo" src="./assets/imgs/splash-logo.png" alt="logo" srcset="">
+                <div class="loading center">loading ...</div>
+            </div>
+
+            <!-- HOME -->
+            <div class="home-screen center  ">
+                <img class="logo" src="./assets/imgs/splash-logo.png" alt="logo" srcset="">
+                <button class="play-button btn" style="padding: 10px;">play</button>
+                <!-- <button style="margin-top:20px ; " class="btn">settings</button> -->
+            </div>
+
+            <!-- GAME -->
+            <div class="game-screen center   ">
+                <div class="light-container center">
+                    <div class="light"></div>
+                    <div class="directions">Get ready</div>
+                </div>
+                <div class="simon">
+                    <div class="">
+                        <img src="./assets/imgs/1x/green.png" alt="" class="simon-button green">
+                        <img src="./assets/imgs/1x/red.png" alt="" class="simon-button red">
+
+                    </div>
+                    <div class="">
+                        <img src="./assets/imgs/1x/yellow.png" alt="" class="simon-button yellow">
+                        <img src="./assets/imgs/1x/blue.png" alt="" class="simon-button blue">
+
+                    </div>
+
+                    <div class="popup">
+                        <h1>GAME OVER</h1>
+                        <p class="massage">Nice job, maybe you will do beter the next time</p>
+                        <h1 class="popup-score">33</h1>
+                        <button class="play-again btn">play again</button>
+                    </div>
+
+                </div>
+                <div class="score"></div>
+            </div>
+
+
+            <!-- end of screen -->
+        </div>
+
+
+    </div>
+    <script src="./js/main.js"></script>
+</body>
+
+</html>
