@@ -148,9 +148,13 @@ function hideScreen(screen) {
 }
 
 function readyToLunch() {
+    _green.src = greenpURL;
+    _blue.src = bluepURL;
+    _red.src = redpURL;
+    _yellow.src = yellowpURL;
     loadingTimeOut = setTimeout(() => {
         changeState('home')
-    }, 4000);
+    }, 5000);
 
 
 }
