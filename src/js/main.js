@@ -1,4 +1,14 @@
 console.log("js working")
+
+import blueURL from '../assets/imgs/1x/blue.png'
+import bluepURL from '../assets/imgs/1x/bluep.png'
+import greenURL from '../assets/imgs/1x/green.png'
+import greenpURL from '../assets/imgs/1x/greenp.png'
+import redURL from '../assets/imgs/1x/red.png'
+import redpURL from '../assets/imgs/1x/redp.png'
+import yellowURL from '../assets/imgs/1x/yellow.png'
+import yellowpURL from '../assets/imgs/1x/yellowp.png'
+
 const _splashScreen = document.querySelector('.splash-screen');
 const _homeScreen = document.querySelector('.home-screen');
 const _gameScreen = document.querySelector('.game-screen');
@@ -23,6 +33,8 @@ var audio2 = new Audio('./assets/2.wav');
 var audio3 = new Audio('./assets/3.wav');
 
 
+
+
 let score = 0;
 let gameState = "splash"
 
@@ -38,6 +50,10 @@ hideScreen(_gameScreen)
 hideScreen(_homeScreen)
 readyToLunch()
 
+_green.src = greenURL;
+_blue.src = blueURL;
+_red.src = redURL;
+_yellow.src = yellowURL;
 
 function changeState(state) {
 
@@ -196,22 +212,19 @@ function gameOver() {
 
 
 let simon = [
-    [0, _green, 'green', audio0],
-    [1, _red, 'red', audio1],
-    [2, _yellow, 'yellow', audio2],
-    [3, _blue, 'blue', audio3]
+    [0, _green, greenURL, audio0, greenpURL],
+    [1, _red, redURL, audio1, redpURL],
+    [2, _yellow, yellowURL, audio2, yellowpURL],
+    [3, _blue, blueURL, audio3, bluepURL]
 ]
 
 function playNote(note) {
-    audio0.pause();
-    audio1.pause();
-    audio2.pause();
-    audio3.pause();
 
-    note[1].src = `./assets/imgs/1x/${note[2]}p.png`;
+
+    note[1].src = note[4];
     note[3].play();
     setTimeout(() => {
-        note[1].src = `./assets/imgs/1x/${note[2]}.png`
+        note[1].src = note[2]
     }, 100);
 
 }
