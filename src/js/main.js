@@ -1,13 +1,18 @@
 console.log("js working")
 
-import blueURL from '../assets/imgs/1x/blue.png'
-import bluepURL from '../assets/imgs/1x/bluep.png'
-import greenURL from '../assets/imgs/1x/green.png'
-import greenpURL from '../assets/imgs/1x/greenp.png'
-import redURL from '../assets/imgs/1x/red.png'
-import redpURL from '../assets/imgs/1x/redp.png'
-import yellowURL from '../assets/imgs/1x/yellow.png'
-import yellowpURL from '../assets/imgs/1x/yellowp.png'
+import blueURL from '/assets/imgs/1x/blue.png'
+import bluepURL from '/assets/imgs/1x/bluep.png'
+import greenURL from '/assets/imgs/1x/green.png'
+import greenpURL from '/assets/imgs/1x/greenp.png'
+import redURL from '/assets/imgs/1x/red.png'
+import redpURL from '/assets/imgs/1x/redp.png'
+import yellowURL from '/assets/imgs/1x/yellow.png'
+import yellowpURL from '/assets/imgs/1x/yellowp.png'
+
+import audio0URL from '/assets/0.wav';
+import audio1URL from '/assets/1.wav';
+import audio2URL from '/assets/2.wav';
+import audio3URL from '/assets/3.wav';
 
 const _splashScreen = document.querySelector('.splash-screen');
 const _homeScreen = document.querySelector('.home-screen');
@@ -27,10 +32,10 @@ const _popUp = document.querySelector('.popup')
 const _playAgainButton = document.querySelector('.play-again')
 const _popUpScore = document.querySelector('.popup-score')
 
-var audio0 = new Audio('./assets/0.wav');
-var audio1 = new Audio('./assets/1.wav');
-var audio2 = new Audio('./assets/2.wav');
-var audio3 = new Audio('./assets/3.wav');
+var audio0 = new Audio(audio0URL);
+var audio1 = new Audio(audio1URL);
+var audio2 = new Audio(audio2URL);
+var audio3 = new Audio(audio3URL);
 
 
 
@@ -145,7 +150,7 @@ function hideScreen(screen) {
 function readyToLunch() {
     loadingTimeOut = setTimeout(() => {
         changeState('home')
-    }, 800);
+    }, 4000);
 
 
 }

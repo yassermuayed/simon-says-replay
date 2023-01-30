@@ -1,6 +1,6 @@
 {
-  "name": "App",
-  "short_name": "App",
+  "name": "Simon says replay",
+  "short_name": "Simon",
   "start_url": "index.html",
   "display": "standalone",
   "icons": [{
