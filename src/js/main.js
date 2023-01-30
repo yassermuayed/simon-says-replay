@@ -1,5 +1,3 @@
-console.log("js working")
-
 import blueURL from '/assets/imgs/1x/blue.png'
 import bluepURL from '/assets/imgs/1x/bluep.png'
 import greenURL from '/assets/imgs/1x/green.png'
@@ -55,9 +53,13 @@ hideScreen(_gameScreen)
 hideScreen(_homeScreen)
 readyToLunch()
 
+_green.src = greenpURL;
 _green.src = greenURL;
+_blue.src = bluepURL;
 _blue.src = blueURL;
+_red.src = redpURL;
 _red.src = redURL;
+_yellow.src = yellowpURL;
 _yellow.src = yellowURL;
 
 function changeState(state) {
@@ -123,7 +125,7 @@ function changeState(state) {
             score++;
             _score.innerText = score;
             replaySequence = []
-            let newNote = Math.floor(Math.random() * (3 - 0))
+            let newNote = Math.floor(Math.random() * (4 - 0))
             watchSequence.push(newNote)
             changeState("start")
             break
@@ -229,6 +231,7 @@ function playNote(note) {
     note[1].src = note[4];
     note[3].play();
     setTimeout(() => {
+        console.log("note timeout")
         note[1].src = note[2]
     }, 100);
 
