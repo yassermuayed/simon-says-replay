@@ -1,11 +1,11 @@
-import blueURL from '/assets/imgs/1x/blue.png'
-import bluepURL from '/assets/imgs/1x/bluep.png'
-import greenURL from '/assets/imgs/1x/green.png'
-import greenpURL from '/assets/imgs/1x/greenp.png'
-import redURL from '/assets/imgs/1x/red.png'
-import redpURL from '/assets/imgs/1x/redp.png'
-import yellowURL from '/assets/imgs/1x/yellow.png'
-import yellowpURL from '/assets/imgs/1x/yellowp.png'
+// import blueURL from '/assets/imgs/1x/blue.png'
+// import bluepURL from '/assets/imgs/1x/bluep.png'
+// import greenURL from '/assets/imgs/1x/green.png'
+// import greenpURL from '/assets/imgs/1x/greenp.png'
+// import redURL from '/assets/imgs/1x/red.png'
+// import redpURL from '/assets/imgs/1x/redp.png'
+// import yellowURL from '/assets/imgs/1x/yellow.png'
+// import yellowpURL from '/assets/imgs/1x/yellowp.png'
 
 import audio0URL from '/assets/0.wav';
 import audio1URL from '/assets/1.wav';
@@ -20,10 +20,22 @@ const _playButton = document.querySelector('.play-button')
 
 const _light = document.querySelector('.light');
 const _directions = document.querySelector('.directions');
+
 const _green = document.querySelector('.green');
 const _red = document.querySelector('.red');
 const _yellow = document.querySelector('.yellow');
 const _blue = document.querySelector('.blue');
+
+const _greenp = document.querySelector('.greenp');
+const _redp = document.querySelector('.redp');
+const _yellowp = document.querySelector('.yellowp');
+const _bluep = document.querySelector('.bluep');
+
+hideScreen(_greenp)
+hideScreen(_redp)
+hideScreen(_yellowp)
+hideScreen(_bluep)
+
 const _score = document.querySelector('.score');
 
 const _popUp = document.querySelector('.popup')
@@ -54,10 +66,10 @@ hideScreen(_homeScreen)
 readyToLunch()
 
 
-_green.src = greenpURL;
-_blue.src = bluepURL;
-_red.src = redpURL;
-_yellow.src = yellowpURL;
+// _green.src = greenpURL;
+// _blue.src = bluepURL;
+// _red.src = redpURL;
+// _yellow.src = yellowpURL;
 
 // _green.src = greenURL;
 // _blue.src = blueURL;
@@ -151,17 +163,50 @@ function hideScreen(screen) {
     }
 }
 
+function showButton(screen) {
+    if (!screen.classList.contains('show-inline')) {
+        screen.classList.add('show-inline')
+        screen.classList.remove('hide')
+    }
+}
+
+function hideButton(screen) {
+    if (!screen.classList.contains('hide')) {
+        screen.classList.add('hide')
+        screen.classList.remove('show-inline')
+    }
+}
+
+function loadScript(src, callback) {
+    let script = document.createElement('script');
+    script.src = src;
+    script.onload = () => callback(script);
+    document.head.append(script);
+}
+
+
+
 function readyToLunch() {
-  
-    loadingTimeOut = setTimeout(() => {
-        changeState('home')
-    }, 5000);
+
+    loadScript('https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.2.0/lodash.js', script => {
+        // alert(`Cool, the script ${script.src} is loaded`);
+        // alert( _ ); // _ is a function declared in the loaded script
+        changeState("home")
+    });
+
+
+
+
+    // loadingTimeOut = setTimeout(() => {
+
+    // }, 5000);
+
 
 
 }
 
 function start() {
-    clearTimeout(loadingTimeOut)
+    // clearTimeout(loadingTimeOut)
     _score.innerText = score;
     _light.style.backgroundColor = "yellow";
     _directions.innerText = "Get ready"
@@ -221,21 +266,28 @@ function gameOver() {
 }
 
 
+// let simon = [
+//     [0, _green, greenURL, audio0, greenpURL],
+//     [1, _red, redURL, audio1, redpURL],
+//     [2, _yellow, yellowURL, audio2, yellowpURL],
+//     [3, _blue, blueURL, audio3, bluepURL]
+// ]
+
 let simon = [
-    [0, _green, greenURL, audio0, greenpURL],
-    [1, _red, redURL, audio1, redpURL],
-    [2, _yellow, yellowURL, audio2, yellowpURL],
-    [3, _blue, blueURL, audio3, bluepURL]
+    [0, _green, _greenp, audio0],
+    [1, _red, _redp, audio1],
+    [2, _yellow, _yellowp, audio2],
+    [3, _blue, _bluep, audio3]
 ]
 
 function playNote(note) {
 
-
-    note[1].src = note[4];
-    note[3].play();
+    hideButton(note[1])
+    showButton(note[2])
+    note[3].play()
     setTimeout(() => {
-        console.log("note timeout")
-        note[1].src = note[2]
+        hideButton(note[2])
+        showButton(note[1])
     }, 100);
 
 }

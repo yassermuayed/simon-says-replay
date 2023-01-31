@@ -39,7 +39,7 @@ body {
   justify-content: center;
   min-width: 100vw;
   min-height: 100vh;
-  max-height: 100vh;
+ 
 }
 
 /* splash */
@@ -78,12 +78,15 @@ body {
   border-radius: 100%;
 }
 
-.simon {}
+.simon {
+  display: flex;
+  flex-direction: column;
+}
 
 .simon-button {
-  width: 40vw;
-  max-height: 150px;
-  max-width: 150px;
+  width: 30vw;
+  max-height: 200px;
+  max-width: 200px;
 }
 
 .light-container{
@@ -130,8 +133,14 @@ body {
   background-color: red;
 }
 
+.show-inline {
+  display: inline;
+  text-align: center;
+}
+
 .show {
   display: flex;
+  text-align: center;
 }
 
 .hide {
