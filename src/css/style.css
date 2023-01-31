@@ -28,18 +28,20 @@ body {
 
 
 .root {
-  background-color: aqua;
+  background-color: rgb(255, 247, 0);
 }
 
 .screen {
   background: rgb(113, 186, 212);
   background: linear-gradient(4deg, rgba(113, 186, 212, 1) 0%, rgba(77, 147, 167, 1) 40%, rgba(0, 212, 255, 1) 100%);
+
   display: flex;
   align-items: center;
   justify-content: center;
   min-width: 100vw;
   min-height: 100vh;
- 
+
+
 }
 
 /* splash */
@@ -64,8 +66,8 @@ body {
 /* home home-screen */
 .home-screen {}
 
-.home-instructions{
-  
+.home-instructions {
+
   font-size: 1rem;
   margin-bottom: 10vh;
 }
@@ -90,29 +92,30 @@ body {
 
 .simon-button {
   width: 30vw;
-  max-height: 200px;
-  max-width: 200px;
+  max-height: 150px;
+  max-width: 150px;
 }
 
-.light-container{
-  margin-bottom: 15vh;
+.light-container {
+  margin-bottom: 10vh;
 }
 
-.light{
+.light {
   margin-bottom: 20px;
 }
 
 .score {
-  margin-top: 15vh;
+  margin-top: 10vh;
 }
 
 .popup {
   background-color: gray;
   border: black solid 8px;
   border-radius: 20px;
-  position:absolute;
-  top: 50%; right: 50%;
-  transform: translate(50%,-50%);
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  transform: translate(50%, -50%);
   width: 80vw;
   display: flex;
   align-items: center;
@@ -183,4 +186,31 @@ body {
   background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
   background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
   text-decoration: none;
+}
+
+@media (min-width: 800px) {
+
+  .logo {
+    height: 100px;
+    width: 100px;
+
+  }
+
+  .simon-button {
+    width: 30vw;
+    max-height: 120px;
+    max-width: 120px;
+  }
+
+  .light-container {
+    margin-bottom: 5vh;
+  }
+
+  .light {
+    margin-bottom: 20px;
+  }
+
+  .score {
+    margin-top: 5vh;
+  }
 }
