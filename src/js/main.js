@@ -1,12 +1,3 @@
-// import blueURL from '/assets/imgs/1x/blue.png'
-// import bluepURL from '/assets/imgs/1x/bluep.png'
-// import greenURL from '/assets/imgs/1x/green.png'
-// import greenpURL from '/assets/imgs/1x/greenp.png'
-// import redURL from '/assets/imgs/1x/red.png'
-// import redpURL from '/assets/imgs/1x/redp.png'
-// import yellowURL from '/assets/imgs/1x/yellow.png'
-// import yellowpURL from '/assets/imgs/1x/yellowp.png'
-
 import audio0URL from '/assets/0.wav';
 import audio1URL from '/assets/1.wav';
 import audio2URL from '/assets/2.wav';
@@ -17,9 +8,13 @@ const _homeScreen = document.querySelector('.home-screen');
 const _gameScreen = document.querySelector('.game-screen');
 
 const _playButton = document.querySelector('.play-button')
-
 const _light = document.querySelector('.light');
 const _directions = document.querySelector('.directions');
+const _timerNotes = document.querySelector('.timer-notes');
+const _score = document.querySelector('.score');
+const _popUp = document.querySelector('.popup')
+const _playAgainButton = document.querySelector('.play-again')
+const _popUpScore = document.querySelector('.popup-score')
 
 const _green = document.querySelector('.green');
 const _red = document.querySelector('.red');
@@ -31,16 +26,7 @@ const _redp = document.querySelector('.redp');
 const _yellowp = document.querySelector('.yellowp');
 const _bluep = document.querySelector('.bluep');
 
-hideScreen(_greenp)
-hideScreen(_redp)
-hideScreen(_yellowp)
-hideScreen(_bluep)
 
-const _score = document.querySelector('.score');
-
-const _popUp = document.querySelector('.popup')
-const _playAgainButton = document.querySelector('.play-again')
-const _popUpScore = document.querySelector('.popup-score')
 
 var audio0 = new Audio(audio0URL);
 var audio1 = new Audio(audio1URL);
@@ -48,6 +34,12 @@ var audio2 = new Audio(audio2URL);
 var audio3 = new Audio(audio3URL);
 
 
+
+
+hideScreen(_greenp)
+hideScreen(_redp)
+hideScreen(_yellowp)
+hideScreen(_bluep)
 
 
 let score = 0;
@@ -64,17 +56,6 @@ showScreen(_splashScreen)
 hideScreen(_gameScreen)
 hideScreen(_homeScreen)
 readyToLunch()
-
-
-// _green.src = greenpURL;
-// _blue.src = bluepURL;
-// _red.src = redpURL;
-// _yellow.src = yellowpURL;
-
-// _green.src = greenURL;
-// _blue.src = blueURL;
-// _red.src = redURL;
-// _yellow.src = yellowURL;
 
 function changeState(state) {
 
@@ -109,6 +90,7 @@ function changeState(state) {
         case "start":
             hideScreen(_popUp)
             gameState = "start"
+            _timerNotes.innerText = '0/0'
             start()
             break
 
@@ -149,6 +131,16 @@ function changeState(state) {
     }
 }
 
+function readyToLunch() {
+
+    loadingTimeOut = setTimeout(() => {
+        changeState("home")
+    }, 1000);
+
+
+
+}
+
 function showScreen(screen) {
     if (!screen.classList.contains('show')) {
         screen.classList.add('show')
@@ -178,19 +170,9 @@ function hideButton(screen) {
 }
 
 
-
-function readyToLunch() {
-
-    loadingTimeOut = setTimeout(() => {
-        changeState("home")
-    }, 1000);
-
-
-
-}
-
 function start() {
     clearTimeout(loadingTimeOut)
+    _timerNotes.innerText = (watchSequence.length)
     _score.innerText = score;
     _light.style.backgroundColor = "yellow";
     _directions.innerText = "Get ready"
@@ -222,6 +204,7 @@ function watch() {
 
 function replay() {
     clearInterval(watchInterval)
+
     _light.style.backgroundColor = "green";
     _directions.innerText = "Replay";
 
@@ -249,14 +232,6 @@ function gameOver() {
     _popUpScore.innerText = score
 }
 
-
-// let simon = [
-//     [0, _green, greenURL, audio0, greenpURL],
-//     [1, _red, redURL, audio1, redpURL],
-//     [2, _yellow, yellowURL, audio2, yellowpURL],
-//     [3, _blue, blueURL, audio3, bluepURL]
-// ]
-
 let simon = [
     [0, _green, _greenp, audio0],
     [1, _red, _redp, audio1],
@@ -273,6 +248,10 @@ function playNote(note) {
         hideButton(note[2])
         showButton(note[1])
     }, 100);
+
+    if (gameState === "replay") {
+        _timerNotes.innerText = (replaySequence.length + 1) + "/" + (watchSequence.length)
+    }
 
 }
 
@@ -314,6 +293,7 @@ _blue.addEventListener('click', () => {
 
 
 _playButton.addEventListener('click', () => {
+    audio0.play()
     changeState('game')
 
 })
