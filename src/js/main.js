@@ -1,7 +1,7 @@
-import audio0URL from '/assets/0.wav';
-import audio1URL from '/assets/1.wav';
-import audio2URL from '/assets/2.wav';
-import audio3URL from '/assets/3.wav';
+import blueURL from '/assets/blue.mp3'
+import greenURL from '/assets/green.mp3'
+import redURL from '/assets/red.mp3'
+import yellowURL from '/assets/yellow.mp3'
 
 const _splashScreen = document.querySelector('.splash-screen');
 const _homeScreen = document.querySelector('.home-screen');
@@ -26,14 +26,14 @@ const _redp = document.querySelector('.redp');
 const _yellowp = document.querySelector('.yellowp');
 const _bluep = document.querySelector('.bluep');
 
+const _simon = document.querySelector('.simon');
 
+const audioGreen =  new Audio(greenURL)
+const audioRed =    new Audio(redURL)
+const audioYellow = new Audio(yellowURL)
+const audioBlue =   new Audio(blueURL)
 
-var audio0 = new Audio(audio0URL);
-var audio1 = new Audio(audio1URL);
-var audio2 = new Audio(audio2URL);
-var audio3 = new Audio(audio3URL);
-
-
+audioBlue.play()
 
 
 hideScreen(_greenp)
@@ -62,7 +62,6 @@ function changeState(state) {
     switch (state) {
         case "splash":
             gameState = "splash"
-
             showScreen(_splashScreen)
             hideScreen(_gameScreen)
             hideScreen(_homeScreen)
@@ -71,16 +70,13 @@ function changeState(state) {
 
         case "home":
             gameState = "home"
-
             showScreen(_homeScreen)
             hideScreen(_gameScreen)
             hideScreen(_splashScreen)
-
             break
 
         case "game":
             gameState = "game"
-
             showScreen(_gameScreen)
             hideScreen(_splashScreen)
             hideScreen(_homeScreen)
@@ -90,6 +86,7 @@ function changeState(state) {
         case "start":
             hideScreen(_popUp)
             gameState = "start"
+
             _timerNotes.innerText = '0/0'
             start()
             break
@@ -131,10 +128,15 @@ function changeState(state) {
     }
 }
 
+
+
+
 function readyToLunch() {
 
     loadingTimeOut = setTimeout(() => {
+
         changeState("home")
+
     }, 1000);
 
 
@@ -196,7 +198,7 @@ function watch() {
         else {
             setTimeout(() => {
                 changeState("replay")
-            }, 300);
+            }, 100);
 
         }
     }, 500);
@@ -233,21 +235,21 @@ function gameOver() {
 }
 
 let simon = [
-    [0, _green, _greenp, audio0],
-    [1, _red, _redp, audio1],
-    [2, _yellow, _yellowp, audio2],
-    [3, _blue, _bluep, audio3]
+    [0, _green, _greenp, audioGreen],
+    [1, _red, _redp, audioRed],
+    [2, _yellow, _yellowp, audioYellow],
+    [3, _blue, _bluep, audioBlue]
 ]
 
 function playNote(note) {
 
+    note[3].play()
     hideButton(note[1])
     showButton(note[2])
-    note[3].play()
     setTimeout(() => {
         hideButton(note[2])
         showButton(note[1])
-    }, 100);
+    }, 150);
 
     if (gameState === "replay") {
         _timerNotes.innerText = (replaySequence.length + 1) + "/" + (watchSequence.length)
@@ -255,7 +257,7 @@ function playNote(note) {
 
 }
 
-_green.addEventListener('click', () => {
+_green.addEventListener('click', (e) => {
     if (gameState === "replay") {
         playNote(simon[0])
         replaySequence.push(0)
@@ -293,7 +295,7 @@ _blue.addEventListener('click', () => {
 
 
 _playButton.addEventListener('click', () => {
-    audio0.play()
+
     changeState('game')
 
 })
@@ -301,3 +303,8 @@ _playButton.addEventListener('click', () => {
 _playAgainButton.addEventListener('click', () => {
     changeState("newgame")
 })
+
+
+
+
+

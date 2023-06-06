@@ -1,7 +1,7 @@
 {
-  "name": "capacitor-app",
-  "version": "1.0.0",
-  "description": "An Amazing Capacitor App",
+  "name": "simon-says-replay",
+  "version": "2.0.0",
+  "description": "The classic simon memory game",
   "main": "index.js",
   "keywords": [
     "capacitor",
@@ -22,6 +22,6 @@
     "@capacitor/cli": "latest",
     "vite": "^2.9.13"
   },
-  "author": "",
+  "author": "Yasser Muayed",
   "license": "ISC"
 }

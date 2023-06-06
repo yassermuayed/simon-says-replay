@@ -1,8 +1,11 @@
 {
   "appId": "com.yassermuayed.ssr",
-  "appName": "ssr-v1",
+  "appName": "Simon says replay",
   "bundledWebRuntime": false,
   "webDir": "dist",
+  "android": {
+    "allowMixedContent": true
+  },
   "plugins": {
     "SplashScreen": {
       "launchShowDuration": 0
