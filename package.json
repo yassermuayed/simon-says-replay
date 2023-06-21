@@ -1,27 +1,52 @@
 {
   "name": "simon-says-replay",
-  "version": "2.0.0",
-  "description": "The classic simon memory game",
+  "version": "3.0.0",
+  "description": "Simon Says Replay is an engaging and addictive npm package that brings back the classic memory game experience to your fingertips. Test your memory skills and challenge yourself to remember and replicate sequences of colors and sounds in this captivating game. With a sleek and intuitive interface, Simon Says Replay offers an immersive gameplay experience that will keep you entertained for hours. Whether you're a casual player looking for a fun way to pass the time or a memory enthusiast seeking to sharpen your cognitive abilities, Simon Says Replay is the perfect choice. Get ready to exercise your brain, master the sequences, and become the ultimate memory champion with Simon Says Replay!",
   "main": "index.js",
-  "keywords": [
-    "capacitor",
-    "mobile"
-  ],
   "scripts": {
-    "start": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack serve --open",
+    "build": "webpack"
   },
-  "dependencies": {
-    "@capacitor/android": "^4.6.2",
-    "@capacitor/camera": "latest",
-    "@capacitor/core": "latest",
-    "@capacitor/splash-screen": "latest"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yassermuayed/simon-says-replay.git"
   },
-  "devDependencies": {
-    "@capacitor/cli": "latest",
-    "vite": "^2.9.13"
-  },
+  "keywords": [
+    "memory game",
+    "Simon Says",
+    "sequence",
+    "colors",
+    "sounds",
+    "memory challenge",
+    "cognitive training",
+    "brain exercise",
+    "memory skills",
+    "gameplay",
+    "entertainment",
+    "addictive",
+    "npm package",
+    "memory champion",
+    "cognitive abilities",
+    "fun",
+    "intuitive interface",
+    "replay",
+    "casual gaming",
+    "brain teaser",
+    "mind game"
+  ],
   "author": "Yasser Muayed",
-  "license": "ISC"
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yassermuayed/simon-says-replay/issues"
+  },
+  "homepage": "https://github.com/yassermuayed/simon-says-replay#readme",
+  "devDependencies": {
+    "css-loader": "^6.8.1",
+    "html-webpack-plugin": "^5.5.1",
+    "style-loader": "^3.3.3",
+    "webpack": "^5.85.1",
+    "webpack-cli": "^5.1.3",
+    "webpack-dev-server": "^4.15.0"
+  }
 }
