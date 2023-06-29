@@ -1,6 +1,25 @@
+/* global css color variables */
+:root {
+  --bg-100: #16191d;
+  --bg-200: #2a2a2a;
+  --bg-300: #555555;
+
+  --simon-yellow: #cbc100;
+  --simon-green: #00d307;
+  --simon-blue: #004adf;
+  --simon-red: #ff1e09;
+  --simon-press: #fff;
+
+  --round-1: 20px;
+  --round-2: 40px;
+  --round-3: 60px;
+}
+
+
 * {
   margin: 0;
   padding: 0;
+  border: none;
 }
 
 
@@ -8,15 +27,18 @@ body {
   height: 100vh;
   overflow: hidden;
 
-  background: linear-gradient(135deg, rgba(38, 43, 47, 1) 0%, rgba(22, 25, 29, 1) 100%);
+  background: linear-gradient(135deg, var(--bg-100) 0%, var(--bg-200) 100%);
   color: whitesmoke;
   display: flex;
   align-items: center;
   justify-content: center;
+  font-family: sans-serif;
 }
 
+
+
 .scene {
-  outline: solid 1px rgb(71, 71, 71);
+  outline: solid 1px rgb(83, 83, 83);
   height: 95vh;
   width: 95vw;
   max-width: 400px;
@@ -26,6 +48,8 @@ body {
   flex-direction: column;
   
 }
+
+
 
 .red-square {
   width: 100px;
@@ -46,3 +70,67 @@ body {
 262B2F
 16191D 
 */
+
+/* .btn-cta{
+  display: flex;
+  width: 70px;
+  height: 20px;
+  border-radius: 20px;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+} */
+
+/* .ss {
+  background-color: red;
+  display: flex;
+  width: 847px;
+  height: 180px;
+  flex-direction: column;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--colors-white, #EBEBEB);
+  text-align: center;
+  font-size: 56px;
+  font-family: Roboto Slab;
+  line-height: 67px;
+} */
+
+.btn{
+  padding: 0.6rem 1.4rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 50px;
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: 1.2rem;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  background-color: #0064b6;
+  color: white;
+  box-shadow: 2px 2px white;
+}
+
+.btn:active{
+  background-color: #00ccff;
+  box-shadow: 1px 1px white;
+}
+
+/* utility  */
+.unselectable {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.fullscreen{
+  position: absolute;
+  top: 10px;
+  right: 0;
+  margin: 0;
+  padding: 0;
+  background-color: none;
+  font-size: 0.7rem;
+}

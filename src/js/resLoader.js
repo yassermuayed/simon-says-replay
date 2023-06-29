@@ -5,7 +5,7 @@ let imagesToLoad = [greenURL, logoURL]
 export default class RecurseLoader{
     constructor(){
 
-    // imagesToLoad.forEach(imgRes => this.loadImage(imgRes))
+    imagesToLoad.forEach(imgRes => this.loadImage(imgRes))
     
     }
 

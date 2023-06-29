@@ -1,0 +1,55 @@
+@import url(style.css);
+
+.instructions {
+    font-size: 2rem;
+    position: absolute;
+    top: 3rem;
+    left: calc(50% - 50px);
+    text-transform: uppercase;
+}
+
+.simon {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.quarter {
+    width: 140px;
+    height: 140px;
+    background-color: #fff;
+    border: var(--bg-200) 6px solid;
+}
+
+.quarter:active {
+    background-color: var(--simon-press);
+}
+
+.q1 {
+    background-color: var(--simon-yellow);
+    border-radius: var(--round-1);
+    border-top-left-radius: 100%;
+
+}
+
+.q2 {
+    background-color: var(--simon-green);
+    border-radius: var(--round-1);
+    border-top-right-radius: 100%;
+
+
+}
+
+.q3 {
+    background-color: var(--simon-blue);
+    border-radius: var(--round-1);
+    border-bottom-left-radius: 100%;
+
+}
+
+.q4 {
+    background-color: var(--simon-red);
+    border-radius: var(--round-1);
+    border-bottom-right-radius: 100%;
+
+}

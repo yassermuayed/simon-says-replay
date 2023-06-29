@@ -1,17 +1,34 @@
 import { gameManager } from "../../main";
-import { button, comment, redSquare } from "../blocks";
+import { button, comment, cont, loading, redSquare } from "../blocks";
 import Scene from "../scene";
 import HomeScene from "./scene_home";
+import '../../css/splash.css'
 
 export default class SplashScene extends Scene {
 
-    constructor(){
+    constructor() {
         super("Splash scene")
-        this.add(comment("loading"))
+        let loadingBar = this.add(loading())
+        console.log("loading type: ",  loading)
         console.log("splash screen")
+
+        let interv =setInterval(() => {
+            console.log("run set intervel")
+        }, 100);
+
+
         setTimeout(() => {
-            gameManager.changeScene(new HomeScene())
+            clearInterval(interv)
+            loadingBar.remove()
+            let bbb = this.add(button("Start", () => {
+
+                // document.documentElement.requestFullscreen()
+                gameManager.changeScene(new HomeScene())
+            }))
+
+            bbb.click()
         }, 1000);
+       
     }
 
 }
