@@ -20,7 +20,8 @@ window.onunload = () => {
 }
 
 
-let { data: countries, error } = await supabase
-  .from('countries')
-  .select('id,name')
-console.log(countries)
+// let { data: countries, error } = await supabase
+//   .from('countries')
+//   .select('id,name')
+// console.log(countries)
+
