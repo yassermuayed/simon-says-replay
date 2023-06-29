@@ -1,4 +1,6 @@
+const webpack = require('webpack');
 const path = require('path')
+require('dotenv').config({ path: './.env' });
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 
@@ -18,6 +20,9 @@ module.exports = {
         new HtmlWebpackPlugin({
             title: 'Simon Says Replay',
             template: 'src/index.html'
+        }),
+        new webpack.DefinePlugin({
+            "process.env": JSON.stringify(process.env),
         }),
     ],
     module: {

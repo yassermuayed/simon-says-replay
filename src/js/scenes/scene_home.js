@@ -3,6 +3,7 @@ import { button, comment, cont, redSquare } from "../blocks";
 import Scene from "../scene";
 import GameScene from "./scene_game";
 import '../../css/home.css'
+import SettingsScene from "./scene_settings";
 export default class HomeScene extends Scene {
 
     constructor(){
@@ -17,7 +18,7 @@ export default class HomeScene extends Scene {
 
         // just for development
         setTimeout(() => {
-            gameManager.changeScene(new GameScene())
+            gameManager.changeScene(new SettingsScene())
         }, 100);
         
 
@@ -29,7 +30,7 @@ export default class HomeScene extends Scene {
         this.add(comment(store.get("wr")))
 
 
-        this.add(cont([button("Settings"), button("About"),this.add(button("Exit"),['follow-me'])]),["flex","bottom"])
+        this.add(cont([button("Settings", ()=> gameManager.changeScene(new SettingsScene())), button("About"),this.add(button("Exit"),['follow-me'])]),["flex","bottom"])
 
        
     }

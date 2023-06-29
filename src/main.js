@@ -6,7 +6,7 @@ import SplashScene from "./js/scenes/scene_splash"
 import Manager from "./js/manager"
 import RecurseLoader from "./js/resLoader"
 import Store from "./js/store"
-
+import {supabase} from "./sb/client"
 
 let root = document.getElementById("root")
 
@@ -14,19 +14,13 @@ export let store = new Store()
 export let resLoader = new RecurseLoader()
 export let gameManager = new Manager()
 
-let startingTime = new Date()
-
-setInterval(() => {
-    console.log(new Date() - stringToDate(store.get("lastVisit")))
-}, 1000);
-
-// convert string back to date
-function stringToDate(str){
-    let date = new Date(str)
-    return date
-}
-
 window.onunload = () => {
     store.saveToLocalStorage("playtime", new Date() - new Date(store.get("lastVisit")) )
     console.log("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
 }
+
+
+let { data: countries, error } = await supabase
+  .from('countries')
+  .select('id,name')
+console.log(countries)
