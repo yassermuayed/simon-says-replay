@@ -16,7 +16,7 @@ export let gameManager = new Manager()
 
 window.onunload = () => {
     store.saveToLocalStorage("playtime", new Date() - new Date(store.get("lastVisit")) )
-    console.log("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+   
 }
 
 

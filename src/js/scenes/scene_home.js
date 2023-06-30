@@ -16,10 +16,10 @@ export default class HomeScene extends Scene {
         }
         this.add(button("New Game",  ()=> gameManager.changeScene(new GameScene())))
 
-        // just for development
-        setTimeout(() => {
-            gameManager.changeScene(new SettingsScene())
-        }, 100);
+        // // just for development
+        // setTimeout(() => {
+        //     gameManager.changeScene(new SettingsScene())
+        // }, 100);
         
 
         this.add(comment("Personal Best"))
