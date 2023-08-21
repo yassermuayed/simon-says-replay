@@ -1,55 +1,67 @@
 @import url(style.css);
 
 .instructions {
-    font-size: 2rem;
-    position: absolute;
-    top: 3rem;
-    left: calc(50% - 50px);
-    text-transform: uppercase;
+  font-size: 2rem;
+  color: pink;
+  position: absolute;
+  top: 6rem;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.traffic-light {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  position: absolute;
+  top: 3rem;
+  background-color: green;
 }
 
 .simon {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .quarter {
-    width: 140px;
-    height: 140px;
-    background-color: #fff;
-    border: var(--bg-200) 6px solid;
+  width: 140px;
+  height: 140px;
+  background-color: #fff;
+  border: var(--bg-200) 6px solid;
 }
 
-.quarter:active {
-    background-color: var(--simon-press);
+.pressed {
+  background-color: var(--simon-press);
+  height: 5000px;
 }
 
 .q1 {
-    background-color: var(--simon-yellow);
-    border-radius: var(--round-1);
-    border-top-left-radius: 100%;
-
+  background-color: var(--simon-yellow);
+  border-radius: var(--round-1);
+  border-top-left-radius: 100%;
 }
 
 .q2 {
-    background-color: var(--simon-green);
-    border-radius: var(--round-1);
-    border-top-right-radius: 100%;
-
-
+  background-color: var(--simon-green);
+  border-radius: var(--round-1);
+  border-top-right-radius: 100%;
 }
 
 .q3 {
-    background-color: var(--simon-blue);
-    border-radius: var(--round-1);
-    border-bottom-left-radius: 100%;
-
+  background-color: var(--simon-blue);
+  border-radius: var(--round-1);
+  border-bottom-left-radius: 100%;
 }
 
 .q4 {
-    background-color: var(--simon-red);
-    border-radius: var(--round-1);
-    border-bottom-right-radius: 100%;
+  background-color: var(--simon-red);
+  border-radius: var(--round-1);
+  border-bottom-right-radius: 100%;
+}
 
+.red {
+  background-color: red;
+  min-width: 20px;
+  min-height: 20px;
 }

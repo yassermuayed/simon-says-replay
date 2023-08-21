@@ -1,0 +1,105 @@
+/* ===================================== */
+.icon-button {
+  border-radius: 8px;
+  background: linear-gradient(90deg, #3e3e3e, #2e2e2e);
+  box-shadow: 0px 0 0.6em #4a4a4a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+}
+
+.icon-button img svg {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* BUG not working on mobile */
+.icon-button:active {
+  scale: 0.9;
+  background-color: #fff;
+}
+
+/* ===================================== */
+/* dialog */
+/* ===================================== */
+
+.dialog {
+  margin: auto;
+  min-width: 75%;
+  padding: 20px;
+}
+.dialog-title {
+  background-color: bisque;
+  padding: 5px 0px;
+}
+
+.dialog-button {
+  padding: 10px;
+}
+
+.change-name-filed {
+  outline: white 1px solid;
+  width: 75%;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* ===================================== */
+
+/* ===================================== */
+.game-over-dialog {
+  background: linear-gradient(75deg, #3e3e3e, #5e5e5e, #3e3e3e);
+  color: rgb(238, 238, 238);
+  padding: 20px;
+  border-radius: 20px;
+  width: 75%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  box-shadow: 2px 2px 1em #000000;
+}
+
+.game-over-score {
+  font-size: 3rem;
+  color: rgb(195, 195, 2);
+  animation: color-change 2s infinite;
+}
+@keyframes color-change {
+  0% {
+    color: #ffffbe;
+    scale: 1.2;
+  }
+  25% {
+    color: #ffffaa;
+    scale: 1;
+  }
+  50% {
+    color: #ffffbe;
+    scale: 1.2;
+  }
+  75% {
+    color: #ffffaa;
+    scale: 1;
+  }
+  100% {
+    color: #ffffbe;
+    scale: 1.2;
+    rotate: 360deg;
+  }
+}
+.play-again-button {
+  padding: 15px 30px;
+  border-radius: 10px;
+  border: none;
+  background: linear-gradient(90deg, #3e3e3e, #2e2e2e);
+  color: rgb(238, 238, 238);
+  outline: rgb(129, 129, 129) 1px solid;
+  margin-top: 20px;
+}

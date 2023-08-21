@@ -1,4 +1,9 @@
-/* global css color variables */
+@font-face {
+  font-family: "comic";
+  src: url("../assets/comicrelief-bold-webfont.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
 :root {
   --bg-100: #16191d;
   --bg-200: #2a2a2a;
@@ -15,42 +20,62 @@
   --round-3: 60px;
 }
 
-
 * {
   margin: 0;
   padding: 0;
   border: none;
 }
 
+html {
+  /* BUG why is this not working */
+  background-color: green;
+}
 
 body {
   height: 100vh;
   overflow: hidden;
-
-  background: linear-gradient(135deg, var(--bg-100) 0%, var(--bg-200) 100%);
+  background: linear-gradient(135deg, var(--bg-100), var(--bg-200));
   color: whitesmoke;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: sans-serif;
+
+  font-family: "comic";
 }
 
-
+#root {
+  display: flex;
+  height: 100dvh;
+  width: 100vw;
+}
 
 .scene {
-  outline: solid 1px rgb(83, 83, 83);
-  height: 95vh;
+  margin: auto;
+  outline: solid 1px rgb(28, 28, 28);
+  border-radius: 5px;
+  height: 95dvh;
   width: 95vw;
+  min-width: 279px;
   max-width: 400px;
+  min-height: 600px;
+
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  
+  position: relative;
 }
-
-
-
+.bottom-bar {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-shrink: 0;
+  color: var(--colors-white, #ebebeb);
+}
+.container {
+  align-self: center;
+  max-width: 400px;
+}
 .red-square {
   width: 100px;
   height: 100px;
@@ -62,41 +87,11 @@ body {
   top: 5px;
   left: 5px;
   font-size: 0.9rem;
-  font-family: 'Courier New', Courier, monospace;
-  color: rgb(184, 184, 184);
+  font-family: "Courier New", Courier, monospace;
+  color: rgb(255, 0, 0);
 }
 
-/* 
-262B2F
-16191D 
-*/
-
-/* .btn-cta{
-  display: flex;
-  width: 70px;
-  height: 20px;
-  border-radius: 20px;
-  justify-content: center;
-  align-items: center;
-  flex-shrink: 0;
-} */
-
-/* .ss {
-  background-color: red;
-  display: flex;
-  width: 847px;
-  height: 180px;
-  flex-direction: column;
-  justify-content: center;
-  flex-shrink: 0;
-  color: var(--colors-white, #EBEBEB);
-  text-align: center;
-  font-size: 56px;
-  font-family: Roboto Slab;
-  line-height: 67px;
-} */
-
-.btn{
+.btn {
   padding: 0.6rem 1.4rem;
   margin-top: 1rem;
   margin-bottom: 1rem;
@@ -110,7 +105,7 @@ body {
   box-shadow: 2px 2px white;
 }
 
-.btn:active{
+.btn:active {
   background-color: #00ccff;
   box-shadow: 1px 1px white;
 }
@@ -125,7 +120,7 @@ body {
   user-select: none;
 }
 
-.fullscreen{
+.fullscreen {
   position: absolute;
   top: 10px;
   right: 0;
@@ -133,4 +128,26 @@ body {
   padding: 0;
   background-color: none;
   font-size: 0.7rem;
+}
+
+.block {
+  width: 140px;
+  height: 140px;
+  background-color: var(--bg-300);
+}
+
+.bottom {
+  position: absolute;
+  bottom: 0;
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+}
+
+canvas {
+  overflow-y: hidden;
+  overflow-x: hidden;
+  width: 100%;
+  margin: 0;
+  z-index: 10000;
 }
