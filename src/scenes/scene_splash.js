@@ -49,7 +49,7 @@ export default class SplashScene extends _Scene {
 
     if (this.loadingComplete) {
       // HACK Remove this to prevent changing scene directly
-      SceneManagerInstance.changeScene(new HomeScene())
+      // SceneManagerInstance.changeScene(new HomeScene())
       this.loadingWidget.loadingText.innerText = ` 100% Loaded (${completedOperations}/${this.operations.length}) (0KiB)`;
       this.add(
         button(
@@ -58,7 +58,7 @@ export default class SplashScene extends _Scene {
             // HACK uncomment to restore full screen request on start
             //  check to see if device is mobile
             if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-              // this.requestFullscreen(document.body);
+              this.requestFullscreen(document.body);
             }
             SceneManagerInstance.changeScene(new HomeScene())
           }
