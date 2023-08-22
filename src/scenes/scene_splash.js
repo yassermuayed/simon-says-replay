@@ -55,11 +55,6 @@ export default class SplashScene extends _Scene {
         button(
           "TAP TO START",
           () => {
-            // HACK uncomment to restore full screen request on start
-            //  check to see if device is mobile
-            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-              this.requestFullscreen(document.body);
-            }
             SceneManagerInstance.changeScene(new HomeScene())
           }
         ),
