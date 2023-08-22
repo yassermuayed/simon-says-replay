@@ -1,7 +1,8 @@
 {
-    "name": "The name of your application",
-    "short_name": "This name will show in your Windows taskbar, in the start menu, and Android homescreen",
-    "start_url": "The URL that should be loaded when your application is opened",
+    "id": "/01982qf4hqio4hf30 ",
+    "name": "Simon Memory Challenge",
+    "short_name": "Simon Memory Challenge",
+    "start_url": "https://yassermuayed.github.io/simon-says-replay/dist/",
     "protocol_handlers": [],
     "display": "standalone",
     "display_override": [
