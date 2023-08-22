@@ -1,4 +1,5 @@
 import { button } from "../components/blocks";
+import { versionNumber } from "../main";
 
 export default class Scene {
   root;
@@ -32,7 +33,7 @@ export default class Scene {
       location.reload();
     });
     let btn = document.createElement("button");
-    btn.appendChild(document.createTextNode(sceneName));
+    btn.appendChild(document.createTextNode(versionNumber + " " + sceneName));
     textNodeDiv.appendChild(btn);
     sceneWindow.appendChild(textNodeDiv);
 

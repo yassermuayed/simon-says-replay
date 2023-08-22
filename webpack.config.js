@@ -2,12 +2,16 @@ const webpack = require("webpack");
 const path = require("path");
 require("dotenv").config({ path: "./.env" });
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
 
 module.exports = {
-  mode: "production",
-  entry: "./src/main.js",
+  mode: "development",
+  entry: {
+    "main": "./src/main.js",
+    "service-worker": "./src/service-worker.js",
+  },
   output: {
-    filename: "bundle.js",
+    filename: "[name].js",
     path: path.resolve(__dirname, "dist"),
     assetModuleFilename: "./assets/[name][ext]",
     clean: true,
@@ -18,11 +22,21 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       title: "Simon Says Replay",
-      template: "src/index.html",
+      template: "./src/template.ejs",
+      favicon: "./src/assets/favicon/favicon.ico",
+      meta: {
+
+      }
     }),
     new webpack.DefinePlugin({
       "process.env": JSON.stringify(process.env),
     }),
+    new CopyWebpackPlugin({
+      patterns: [
+        { from: "src/manifest.json", to: "" },
+        { from: "./src/assets/favicon", to: "favicon/" },
+      ]
+    })
   ],
   module: {
     rules: [
@@ -31,11 +45,16 @@ module.exports = {
         use: ["style-loader", "css-loader"],
       },
       {
-        test: /\.(mp3|png|svg|jpg|jpeg|gif)$/i,
+        test: /\.(png|svg|webp|jpg|jpeg|gif)$/i,
         type: "asset/resource",
       },
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/i,
+        type: 'asset/resource',
+      },
+      {
+        test: /\.webmanifest$/i,
+        use: 'webpack-webmanifest-loader',
         type: 'asset/resource',
       },
     ],
