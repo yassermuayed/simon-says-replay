@@ -8,7 +8,7 @@ export default class Scene {
     console.log("scene class constructor");
     this.root = root;
     this.name = name;
-    this.instance = root.appendChild(this.createSceneWindow(this.name));
+    this.instance = root.appendChild(this.createSceneWindow());
     this.kids = [];
   }
 
@@ -18,7 +18,7 @@ export default class Scene {
    * @param {string} sceneName - The name of the scene.
    * @return {HTMLElement} The created scene window element.
    */
-  createSceneWindow(sceneName) {
+  createSceneWindow() {
     let sceneWindow = document.createElement("div");
     sceneWindow.classList.add("scene");
 

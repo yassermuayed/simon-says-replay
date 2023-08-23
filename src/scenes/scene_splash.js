@@ -46,9 +46,9 @@ export default class SplashScene extends _Scene {
 
     if (this.loadingComplete) {
       // HACK Remove this to prevent changing scene directly
-      setTimeout(() => {
-        SceneManagerInstance.changeScene(new HomeScene());
-      });
+      // setTimeout(() => {
+      //   SceneManagerInstance.changeScene(new HomeScene());
+      // });
 
       this.loadingWidget.loadingText.innerText = ` 100% Loaded (${completedOperations}/${this.operations.length}) (0KiB)`;
       this.add(

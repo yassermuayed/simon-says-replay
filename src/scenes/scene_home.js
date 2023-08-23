@@ -19,9 +19,9 @@ export default class HomeScene extends _Scene {
   constructor() {
     super("home scene");
     console.log("========== Home scene");
-    setTimeout(() => {
-      SceneManagerInstance.changeScene(new GameScene());
-    });
+    // setTimeout(() => {
+    //   SceneManagerInstance.changeScene(new GameScene());
+    // });
     this.add(gameLogo());
     this.add(comment("Simon Memory Challenge"));
     this.add(
