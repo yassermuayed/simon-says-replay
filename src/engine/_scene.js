@@ -1,6 +1,3 @@
-import { button } from "../components/blocks";
-import { versionNumber } from "../main";
-
 export default class Scene {
   root;
   name;
@@ -15,7 +12,6 @@ export default class Scene {
     this.kids = [];
   }
 
-
   /**
    * Creates a scene window element for the specified scene name.
    *
@@ -27,38 +23,37 @@ export default class Scene {
     sceneWindow.classList.add("scene");
 
     // HACK delete this in production
-    let textNodeDiv = document.createElement("div");
-    textNodeDiv.classList.add("scene-name", "unselectable");
-    textNodeDiv.addEventListener("click", () => {
-      location.reload();
-    });
-    let btn = document.createElement("button");
-    btn.appendChild(document.createTextNode(versionNumber + " " + sceneName));
-    textNodeDiv.appendChild(btn);
-    sceneWindow.appendChild(textNodeDiv);
+    // let textNodeDiv = document.createElement("div");
+    // textNodeDiv.classList.add("scene-name", "unselectable");
+    // textNodeDiv.addEventListener("click", () => {
+    //   location.reload();
+    // });
+    // let btn = document.createElement("button");
+    // btn.appendChild(document.createTextNode(versionNumber + " " + sceneName));
+    // textNodeDiv.appendChild(btn);
+    // sceneWindow.appendChild(textNodeDiv);
 
-    if (sceneName === "Game Scene") {
-      sceneWindow.appendChild(this.gui());
-    }
+    // if (sceneName === "Game Scene") {
+    //   sceneWindow.appendChild(this.gui());
+    // }
 
     return sceneWindow;
   }
 
   gui() {
-
-
     let bottomBar = document.createElement("div");
-    bottomBar.classList.add("bottom-bar");
-    let textNodeDiv = document.createTextNode("Info Bar");
-    bottomBar.appendChild(textNodeDiv);
+    // bottomBar.classList.add("bottom-bar");
+    // let textNodeDiv = document.createTextNode("Info Bar");
+    // bottomBar.appendChild(textNodeDiv);
 
-    bottomBar.appendChild(button("Reset", () => {
-      location.reload();
-    }));
+    // bottomBar.appendChild(
+    //   button("Reset", () => {
+    //     location.reload();
+    //   })
+    // );
 
     return bottomBar;
   }
-
 
   /**
    * Adds a given element to the list of kids and appends it to the instance.

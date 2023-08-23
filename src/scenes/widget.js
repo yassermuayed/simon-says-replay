@@ -3,7 +3,6 @@ import Signal from "../engine/_signal";
 export default class Widget {
   audioContext;
   obj;
-
   constructor() {
     console.log("Widget constructor");
 
@@ -27,6 +26,15 @@ export default class Widget {
     this.obj.canUserInteract = false;
     this.obj.userInputSignals = new Signal();
 
+    // styling divs
+    let bg1 = document.createElement("div");
+    bg1.classList.add("bg1");
+    this.obj.appendChild(bg1);
+
+    let fg1 = document.createElement("div");
+    fg1.classList.add("fg1");
+    this.obj.appendChild(fg1);
+
     return this.obj;
   }
 
@@ -47,16 +55,18 @@ export default class Widget {
   pressed(div, qClassName) {
     StateManagerInstance.soundPlayCount++;
     console.log("press count: ", StateManagerInstance.soundPlayCount);
-    console.log(div, " pressed with class name: ", qClassName)
+    console.log(div, " pressed with class name: ", qClassName);
 
     let originalColor = div.style.backgroundColor;
+    let originalBoxShadow = div.style.boxShadow;
     let originalScale = div.style.transform;
     div.style.backgroundColor = "white";
-    div.style.transform = "scale(1.2)";
-
+    div.style.transform = "scale(1.1)";
+    div.style.boxShadow = "0 0 20px white";
     setTimeout(() => {
       div.style.backgroundColor = originalColor;
       div.style.transform = originalScale;
+      div.style.boxShadow = originalBoxShadow;
     }, 100);
 
     // LATER read about the scope of this in nested functions and arrow functions inside classes
@@ -80,14 +90,17 @@ export default class Widget {
 
       // Create a sine wave oscillator.
       const oscillator = this.audioContext.createOscillator();
-      oscillator.frequency.setValueAtTime(540 * multiplier, this.audioContext.currentTime);
+      oscillator.frequency.setValueAtTime(
+        540 * multiplier,
+        this.audioContext.currentTime
+      );
       oscillator.connect(this.audioContext.destination);
 
       oscillator.start();
       setTimeout(() => {
         oscillator.stop();
       }, 100);
-    }
+    };
     generateAudio();
 
     function vibratePhone(duration) {

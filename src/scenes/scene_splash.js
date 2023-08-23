@@ -1,30 +1,27 @@
 import "../css/splash.css";
 import _Scene from "../engine/_scene";
-import { loading, button, comment } from "../components/blocks";
 import { SceneManagerInstance } from "../main";
+import { loading, button, comment } from "../components/blocks";
 import HomeScene from "./scene_home";
+import loadingOperations from "../engine/loading-operations";
 
 export default class SplashScene extends _Scene {
   loadingWidget;
   loadingProgress;
   loadingComplete;
-  // TODO loadingOperations is an array if functions that can be appended to from anywhere 
+  // TODO loadingOperations is an array if functions that can be appended to from anywhere
   operations;
   constructor() {
     super("Splash scene");
     console.log("========= splash scene constructor");
     this.loadingComplete = false;
     this.loadingProgress = 0;
-    this.operations = [];
-    for (let i = 0; i < 374; i++) {
-      this.operations.push(this.getRandomOperationName());
-    }
+    this.operations = loadingOperations;
     this.add(comment("SIMON SAYS REPLAY"), ["splash-logo"]);
     this.loadingWidget = this.add(loading());
 
-
-    console.log("Loading Widget : ", this.loadingWidget)
-    console.dir(this.loadingWidget)
+    console.log("Loading Widget : ", this.loadingWidget);
+    console.dir(this.loadingWidget);
     this.startLoading();
   }
 
@@ -49,48 +46,27 @@ export default class SplashScene extends _Scene {
 
     if (this.loadingComplete) {
       // HACK Remove this to prevent changing scene directly
-      // SceneManagerInstance.changeScene(new HomeScene())
+      setTimeout(() => {
+        SceneManagerInstance.changeScene(new HomeScene());
+      });
+
       this.loadingWidget.loadingText.innerText = ` 100% Loaded (${completedOperations}/${this.operations.length}) (0KiB)`;
       this.add(
-        button(
-          "TAP TO START",
-          () => {
-            SceneManagerInstance.changeScene(new HomeScene())
-          }
-        ),
-        ["splash-button"]);
+        button("TAP TO START", () => {
+          SceneManagerInstance.changeScene(new HomeScene());
+        }),
+        ["splash-button"]
+      );
     }
-
   }
 
   async startLoading() {
     let completedOperations = 0;
     this.operations.forEach((op) => {
-      this.fakeOperation().then(() => {
-        completedOperations++;
-        this.loadingProgress = completedOperations / this.operations.length;
-        console.log(op)
-        this.update(op, completedOperations);
-
-      });
-    })
-  }
-
-  fakeOperation() {
-    let randomTime = Math.random() * 500;
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        resolve("success");
-      }, randomTime);
-    })
-  }
-
-  getRandomOperationName() {
-    const operationNames = [
-      "Operation",
-    ];
-
-    const randomIndex = Math.floor(Math.random() * operationNames.length);
-    return operationNames[randomIndex];
+      op.execute();
+      completedOperations++;
+      this.loadingProgress = completedOperations / this.operations.length;
+      this.update(op, completedOperations);
+    });
   }
 }

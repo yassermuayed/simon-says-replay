@@ -2,60 +2,128 @@
 
 .instructions {
   font-size: 2rem;
-  color: pink;
+  color: var(--bg-300);
   position: absolute;
-  top: 6rem;
+  top: 4rem;
   text-transform: uppercase;
   text-align: center;
 }
 
 .traffic-light {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
   position: absolute;
-  top: 3rem;
-  background-color: green;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  z-index: 10;
+  box-shadow: 0 0 30px #f90000;
 }
 
 .simon {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  z-index: 3;
+  scale: 0.95;
+}
+
+/* Classes to style simon widget */
+.bg1 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 330px;
+  height: 330px;
+  border-top-right-radius: 46%;
+  border-top-left-radius: 46%;
+  border-bottom-right-radius: 46%;
+  border-bottom-left-radius: 46%;
+
+  background-color: var(--bg-200);
+
+  border: var(--bg-100) 6px solid;
+  border-style: double;
+  box-shadow: 1px 1px 1em #000000;
+}
+
+.fg1 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 96px;
+  height: 96px;
+  border-radius: 100%;
+  background-color: rgb(31, 31, 31);
+  /* border: var(--bg-200) 6px solid; */
+  z-index: 8;
+}
+
+.score {
+  position: absolute;
+  font-family: monospace;
+  font-weight: bolder;
+  font-size: 1.5rem;
+  text-shadow: #707070 0px 0px 5px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 24;
 }
 
 .quarter {
   width: 140px;
   height: 140px;
   background-color: #fff;
-  border: var(--bg-200) 6px solid;
-}
-
-.pressed {
-  background-color: var(--simon-press);
-  height: 5000px;
+  border: var(--bg-200) 8px solid;
+  z-index: 4;
 }
 
 .q1 {
-  background-color: var(--simon-yellow);
+  background: linear-gradient(
+    75deg,
+    var(--simon-yellow),
+    #f6ff00,
+    var(--simon-yellow)
+  );
   border-radius: var(--round-1);
   border-top-left-radius: 100%;
 }
 
 .q2 {
-  background-color: var(--simon-green);
+  background: linear-gradient(
+    140deg,
+    var(--simon-green),
+    #7bdf09,
+    var(--simon-green)
+  );
   border-radius: var(--round-1);
   border-top-right-radius: 100%;
 }
 
 .q3 {
-  background-color: var(--simon-blue);
+  background: linear-gradient(
+    140deg,
+    var(--simon-blue),
+    #0077ff,
+    var(--simon-blue)
+  );
   border-radius: var(--round-1);
   border-bottom-left-radius: 100%;
 }
 
 .q4 {
-  background-color: var(--simon-red);
+  background: linear-gradient(
+    75deg,
+    var(--simon-red),
+    #ff5858,
+    var(--simon-red)
+  );
   border-radius: var(--round-1);
   border-bottom-right-radius: 100%;
 }

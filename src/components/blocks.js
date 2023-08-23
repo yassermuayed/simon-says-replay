@@ -1,9 +1,22 @@
-import Block from "./block";
 import "../css/blocks.css";
-import defaultIcon from "../assets/defaulticon.svg";
+
 import { StateManagerInstance } from "../main";
+import Block from "./block";
 
+import defaultIcon from "../assets/defaulticon.svg";
+import logoURL from "../assets/favicon/android-chrome-512x512.png";
 
+export function gameLogo() {
+  let logo = document.createElement("div");
+  logo.classList.add("logo-image")
+
+  let image = document.createElement("img")
+  image.src = logoURL;
+  image.style.maxWidth = "100%"
+  logo.appendChild(image)
+
+  return logo
+}
 
 export function redSquare() {
   let rs = document.createElement("div");

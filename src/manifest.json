@@ -1,8 +1,7 @@
 {
-    "id": "/01982qf4hqio4hf30 ",
+    "id": "/",
     "name": "Simon Memory Challenge",
     "short_name": "Simon Memory Challenge",
-    "start_url": "https://yassermuayed.github.io/simon-says-replay/dist/",
     "protocol_handlers": [],
     "display": "standalone",
     "display_override": [
