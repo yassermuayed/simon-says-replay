@@ -148,7 +148,7 @@ export default class GameScene extends _Scene {
 
     setTimeout(() => {
       this.changeState(this.FSMEnum.replay);
-    }, 800);
+    });
   }
 
   replay() {
@@ -209,7 +209,7 @@ export default class GameScene extends _Scene {
     setTimeout(() => {
       this.changeState(this.FSMEnum.start);
       this.level++;
-    }, 1000);
+    }, 400);
   }
 
   gameOver() {
