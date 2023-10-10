@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack serve --open",
     "build": "webpack  ",
-    "script": "./script.sh"
+    "script": "./script.sh",
+    "static": "static-server  "
   },
   "repository": {
     "type": "git",
