@@ -5,6 +5,8 @@ import { loading, button, comment } from "../components/blocks";
 import HomeScene from "./scene_home";
 import loadingOperations from "../engine/loading-operations";
 
+import "../assets/splash-logo.png";
+
 export default class SplashScene extends _Scene {
   loadingWidget;
   loadingProgress;
@@ -17,7 +19,13 @@ export default class SplashScene extends _Scene {
     this.loadingComplete = false;
     this.loadingProgress = 0;
     this.operations = loadingOperations;
-    this.add(comment("SIMON SAYS REPLAY"), ["splash-logo"]);
+    this.add(comment("V2.0.0 Webpack build 4 Android 33"), ["build-number"]);
+
+    let splashLogo = document.createElement("img");
+    splashLogo.src = "../assets/splash-logo.png";
+    splashLogo.className = "splash-logo";
+    this.add(splashLogo);
+
     this.loadingWidget = this.add(loading());
 
     console.log("Loading Widget : ", this.loadingWidget);
@@ -46,9 +54,9 @@ export default class SplashScene extends _Scene {
 
     if (this.loadingComplete) {
       // HACK Remove this to prevent changing scene directly
-      // setTimeout(() => {
-      //   SceneManagerInstance.changeScene(new HomeScene());
-      // });
+      setTimeout(() => {
+        SceneManagerInstance.changeScene(new HomeScene());
+      });
 
       this.loadingWidget.loadingText.innerText = ` 100% Loaded (${completedOperations}/${this.operations.length}) (0KiB)`;
       this.add(

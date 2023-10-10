@@ -1,3 +1,51 @@
+.home-logo {
+  width: 80%;
+}
+
 .new-game-btn {
-  background-color: gray;
+  margin-top: 80px;
+  margin-bottom: 60px;
+  padding: 25px 40px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 900;
+  font-size: 1.2rem;
+  color: #cbc100;
+  text-transform: uppercase;
+  animation: btn-flash 0.3s infinite;
+}
+@keyframes btn-flash {
+  0% {
+    outline: #cbc10047 2px solid;
+  }
+  50% {
+    outline: #cbc10053 2px solid;
+  }
+  100% {
+    outline: #cbc10047 2px solid;
+  }
+}
+
+.high-score {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* outline: #ffffff36 5px solid; */
+  border-radius: 5px;
+}
+
+.high-score div:first-child {
+  font-size: 2rem;
+  font-weight: 900;
+  margin: 10px 0;
+  color: #cbc100;
+}
+
+.high-score div:last-child {
+  font-weight: 100;
+  /* background-color: #cbc100; */
+  border-top: #ffffff36 5px solid;
+  padding: 10px 20px;
+  border-radius: 30px 30px 0 0;
+  color: #ffffff8b;
 }

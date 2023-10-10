@@ -9,10 +9,10 @@
     content="Simon Says Replay is an engaging and addictive npm package that brings back the classic memory game experience to your fingertips. Test your memory skills and challenge yourself to remember and replicate sequences of colors and sounds in this captivating game. With a sleek and intuitive interface, Simon Says Replay offers an immersive game play experience that will keep you entertained for hours. Whether you're a casual player looking for a fun way to pass the time or a memory enthusiast seeking to sharpen your cognitive abilities, Simon Says Replay is the perfect choice. Get ready to exercise your brain, master the sequences, and become the ultimate memory champion with Simon Says Replay!" />
   <meta name="keywords" content="memory game " />
   <link rel="manifest" href="./manifest.json" />
-  <script defer>
+  <script type="module" defer>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', function () {
-        navigator.serviceWorker.register('/sw.js');
+        navigator.serviceWorker.register('./service-worker.js');
       });
     }
   </script>

@@ -1,12 +1,13 @@
 {
-  "name": "simon-says-replay",
+  "name": "Simon Memory Challenge",
   "version": "3.0.0",
   "description": "Simon Says Replay is an engaging and addictive npm package that brings back the classic memory game experience to your fingertips. Test your memory skills and challenge yourself to remember and replicate sequences of colors and sounds in this captivating game. With a sleek and intuitive interface, Simon Says Replay offers an immersive gameplay experience that will keep you entertained for hours. Whether you're a casual player looking for a fun way to pass the time or a memory enthusiast seeking to sharpen your cognitive abilities, Simon Says Replay is the perfect choice. Get ready to exercise your brain, master the sequences, and become the ultimate memory champion with Simon Says Replay!",
   "main": "/src/main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack serve --open",
-    "build": "webpack  "
+    "build": "webpack  ",
+    "script": "./script.sh"
   },
   "repository": {
     "type": "git",

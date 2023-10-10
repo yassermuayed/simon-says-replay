@@ -6,9 +6,9 @@ const CopyWebpackPlugin = require("copy-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
 
 module.exports = {
-  mode: "production",
+  mode: "development",
   entry: {
-    sw: "./src/sw.js",
+    "service-worker": "./src/service-worker",
     main: "./src/main.js",
   },
   output: {
@@ -27,9 +27,9 @@ module.exports = {
 
   plugins: [
     new HtmlWebpackPlugin({
-      title: "Simon Says Replay",
+      title: "Simon Memory Challenge",
       template: "./src/template.ejs",
-      favicon: "./src/assets/favicon/favicon.ico",
+      // favicon: "./dist/favicon.ico",
     }),
     new webpack.DefinePlugin({
       "process.env": JSON.stringify(process.env),

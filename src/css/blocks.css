@@ -105,8 +105,13 @@
   margin-top: 20px;
 }
 
+.play-again-button:active {
+  background-color: #00ccff;
+  box-shadow: 1px 1px white;
+  scale: 0.9;
+}
+
 /*  */
 .logo-image {
-  width: 30%;
-  margin: 0 auto;
+ width: 20px;
 }

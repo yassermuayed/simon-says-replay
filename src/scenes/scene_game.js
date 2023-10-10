@@ -4,20 +4,17 @@ import {
   comment,
   cont,
   gameOverDialog,
-  iconButton,
+  htm,
   trafficLight,
 } from "../components/blocks";
 import _Scene from "../engine/_scene";
 import Widget from "./widget";
 import { SceneManagerInstance, StateManagerInstance } from "../main";
 import confetti from "../components/confetti";
-
-import di from "../assets/defaulticon.svg";
-import homeIcon from "../assets/home.svg";
-import SettingsScene from "./scene_settings";
+import HomeScene from "./scene_home";
 
 export default class GameScene extends _Scene {
-  FSMEnum = {
+  ENUM = {
     freshGame: "FRESH_GAME",
     start: "START",
     watch: "WATCH",
@@ -26,6 +23,7 @@ export default class GameScene extends _Scene {
     nextLevel: "NEXT_LEVEL",
     gameOver: "GAME_OVER",
     highScore: "HIGH_SCORE",
+    pause: "PAUSE",
   };
   widgetInstance;
   wi;
@@ -48,25 +46,14 @@ export default class GameScene extends _Scene {
     this.trafficLight.appendChild(this.score);
 
     this.instructions = this.add(comment("instructions"), ["instructions"]);
-    this.changeState(this.FSMEnum.freshGame);
+    this.changeState(this.ENUM.freshGame);
     this.userInput = [];
     this.activeSequence = [];
     // LATER ($one) study bind(this) in https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind
     this.wi.userInputSignals.add(this.userInputListener.bind(this));
 
-    this.add(
-      cont([
-        iconButton(homeIcon, () => {}),
-        // iconButton(di, () =>
-        //   SceneManagerInstance.changeScene(new SettingsScene())),
-        // iconButton(di, () =>
-        //   SceneManagerInstance.changeScene(new SettingsScene())),
-        iconButton(di, () =>
-          SceneManagerInstance.changeScene(new SettingsScene())
-        ),
-      ]),
-      ["flex", "bottom"]
-    );
+    let hiddenButton = htm("button", ["hidden"]);
+    this.add(cont([hiddenButton]), ["flex", "bottom"]);
   }
 
   changeState(state, stuffToRemove = []) {
@@ -83,30 +70,33 @@ export default class GameScene extends _Scene {
 
   loop(param) {
     switch (param) {
-      case this.FSMEnum.freshGame:
+      case this.ENUM.freshGame:
         this.freshGame();
 
         break;
-      case this.FSMEnum.start:
+      case this.ENUM.start:
         this.start();
         break;
-      case this.FSMEnum.watch:
+      case this.ENUM.watch:
         this.watch();
         break;
-      case this.FSMEnum.getReady:
+      case this.ENUM.getReady:
         this.getReady();
         break;
-      case this.FSMEnum.replay:
+      case this.ENUM.replay:
         this.replay();
         break;
-      case this.FSMEnum.nextLevel:
+      case this.ENUM.nextLevel:
         this.nextLevel();
         break;
-      case this.FSMEnum.gameOver:
+      case this.ENUM.gameOver:
         this.gameOver();
         break;
-      case this.FSMEnum.highScore:
+      case this.ENUM.highScore:
         this.highScore();
+        break;
+      case this.ENUM.pause:
+        this.pause();
         break;
 
       default:
@@ -117,7 +107,7 @@ export default class GameScene extends _Scene {
   freshGame() {
     console.log("freshGame state");
     this.setInstructions("New Game", "blue");
-    this.changeState(this.FSMEnum.start);
+    this.changeState(this.ENUM.start);
   }
 
   start() {
@@ -125,7 +115,7 @@ export default class GameScene extends _Scene {
     this.setInstructions("Watch", "pink");
     this.userInput = [];
     setTimeout(() => {
-      this.changeState(this.FSMEnum.watch);
+      this.changeState(this.ENUM.watch);
       console.log();
     }, 100);
   }
@@ -137,7 +127,7 @@ export default class GameScene extends _Scene {
     this.activeSequence = this.generateSequence(this.level);
     this.playSequence(this.activeSequence).then(() => {
       setTimeout(() => {
-        this.changeState(this.FSMEnum.getReady);
+        this.changeState(this.ENUM.getReady);
       }, 400);
     });
   }
@@ -147,7 +137,7 @@ export default class GameScene extends _Scene {
     this.setInstructions("Get Ready", "red");
 
     setTimeout(() => {
-      this.changeState(this.FSMEnum.replay);
+      this.changeState(this.ENUM.replay);
     });
   }
 
@@ -181,7 +171,7 @@ export default class GameScene extends _Scene {
           index
         );
         if (index === this.activeSequence.length - 1) {
-          this.changeState(this.FSMEnum.nextLevel);
+          this.changeState(this.ENUM.nextLevel);
         }
       } else {
         console.log(
@@ -193,7 +183,7 @@ export default class GameScene extends _Scene {
           " at index: ",
           index
         );
-        this.changeState(this.FSMEnum.gameOver);
+        this.changeState(this.ENUM.gameOver);
       }
     });
   }
@@ -207,9 +197,17 @@ export default class GameScene extends _Scene {
     this.setInstructions("Good Job", "white");
     this.wi.canUserInteract = false;
     setTimeout(() => {
-      this.changeState(this.FSMEnum.start);
+      this.changeState(this.ENUM.start);
       this.level++;
     }, 400);
+  }
+
+  pause() {
+    this.add(
+      gameOverDialog("Pause", this.level, () => {
+        SceneManagerInstance.changeScene(new GameScene());
+      })
+    );
   }
 
   gameOver() {
@@ -219,18 +217,32 @@ export default class GameScene extends _Scene {
     if (this.level - 1 > StateManagerInstance.personalBest) {
       confetti();
       this.add(
-        gameOverDialog("New Personal Best", this.level, () => {
-          SceneManagerInstance.changeScene(new GameScene());
-        })
+        gameOverDialog(
+          "New Personal Best",
+          this.level,
+          () => {
+            SceneManagerInstance.changeScene(new GameScene());
+          },
+          () => {
+            SceneManagerInstance.changeScene(new HomeScene());
+          }
+        )
       );
       StateManagerInstance.personalBest = this.level - 1;
       StateManagerInstance.saveToLocalStorage("personalBest", this.level - 1);
       StateManagerInstance.syncVariablesWithLocalStorage();
     } else {
       this.add(
-        gameOverDialog("Game Over", this.level - 1, () => {
-          SceneManagerInstance.changeScene(new GameScene());
-        })
+        gameOverDialog(
+          "Game Over",
+          this.level - 1,
+          () => {
+            SceneManagerInstance.changeScene(new GameScene());
+          },
+          () => {
+            SceneManagerInstance.changeScene(new HomeScene());
+          }
+        )
       );
     }
     this.wi.canUserInteract = false;
