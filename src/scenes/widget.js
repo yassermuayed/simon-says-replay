@@ -68,8 +68,6 @@ export default class Widget {
       div.style.transform = originalScale;
       div.style.boxShadow = originalBoxShadow;
     }, 100);
-
-    // LATER read about the scope of this in nested functions and arrow functions inside classes
     const generateAudio = () => {
       let multiplier = 1;
 

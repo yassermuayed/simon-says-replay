@@ -49,7 +49,6 @@ export default class GameScene extends _Scene {
     this.changeState(this.ENUM.freshGame);
     this.userInput = [];
     this.activeSequence = [];
-    // LATER ($one) study bind(this) in https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind
     this.wi.userInputSignals.add(this.userInputListener.bind(this));
 
     let hiddenButton = htm("button", ["hidden"]);
@@ -218,8 +217,8 @@ export default class GameScene extends _Scene {
       confetti();
       this.add(
         gameOverDialog(
-          "New Personal Best",
-          this.level,
+          "New High Score",
+          this.level - 1,
           () => {
             SceneManagerInstance.changeScene(new GameScene());
           },

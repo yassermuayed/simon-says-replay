@@ -133,7 +133,7 @@ export function dialog(pText = "Default Paragraph Text", formActionCallBack) {
 
   let btn = document.createElement("button");
   btn.type = "submit";
-  // LATER study funciton once and for all shloud i put paranthases or not
+  
   btn.addEventListener("click", console.log("clicked"));
   btn.textContent = "Action";
   btn.classList.add("dialog-button");

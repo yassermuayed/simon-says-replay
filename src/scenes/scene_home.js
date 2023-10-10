@@ -24,7 +24,6 @@ export default class HomeScene extends _Scene {
       ["new-game-btn"]
     );
 
-    // TODO connect to supabase or a leaderboard service
 
     this.add(
       cont([

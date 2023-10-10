@@ -75,7 +75,7 @@
 @keyframes color-change {
   0% {
     color: #ffffbe;
-    scale: 1.2;
+    scale: 1.01;
   }
   25% {
     color: #ffffaa;
@@ -83,7 +83,7 @@
   }
   50% {
     color: #ffffbe;
-    scale: 1.2;
+    scale: 1.05;
   }
   75% {
     color: #ffffaa;
@@ -91,18 +91,17 @@
   }
   100% {
     color: #ffffbe;
-    scale: 1.2;
-    rotate: 360deg;
+    scale: 1.1;
   }
 }
 .play-again-button {
-  padding: 15px 30px;
+  padding: 15px 25px;
   border-radius: 10px;
   border: none;
   background: linear-gradient(90deg, #3e3e3e, #2e2e2e);
   color: rgb(238, 238, 238);
   outline: rgb(129, 129, 129) 1px solid;
-  margin-top: 20px;
+  margin: 5px;
 }
 
 .play-again-button:active {

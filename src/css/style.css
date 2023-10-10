@@ -27,7 +27,6 @@
 }
 
 html {
-  /* BUG why is this not working */
   background-color: green;
 }
 

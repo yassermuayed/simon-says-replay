@@ -26,8 +26,6 @@ export default class StateManager {
     } else {
       this.firstTimeSetUp()
     }
-    // HACK remove after 
-    // this.firstTimeSetUp()
   }
 
   firstTimeSetUp() {

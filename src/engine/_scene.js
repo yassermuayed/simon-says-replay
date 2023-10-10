@@ -22,21 +22,6 @@ export default class Scene {
     let sceneWindow = document.createElement("div");
     sceneWindow.classList.add("scene");
 
-    // HACK delete this in production
-    // let textNodeDiv = document.createElement("div");
-    // textNodeDiv.classList.add("scene-name", "unselectable");
-    // textNodeDiv.addEventListener("click", () => {
-    //   location.reload();
-    // });
-    // let btn = document.createElement("button");
-    // btn.appendChild(document.createTextNode(versionNumber + " " + sceneName));
-    // textNodeDiv.appendChild(btn);
-    // sceneWindow.appendChild(textNodeDiv);
-
-    // if (sceneName === "Game Scene") {
-    //   sceneWindow.appendChild(this.gui());
-    // }
-
     return sceneWindow;
   }
 
