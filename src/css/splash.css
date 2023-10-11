@@ -7,7 +7,6 @@
   color: #828282;
 }
 .splash-logo {
-  /* transform: translateY(-50px); */
   position: absolute;
   top: 10%;
   text-align: center;
@@ -53,7 +52,7 @@
   position: absolute;
   top: 70%;
   transform: translateY(-50px);
-  border: yellow 4px solid;
+  border: rgba(255, 255, 0, 0.102) 4px solid;
 }
 
 .progress {

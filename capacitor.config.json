@@ -1,0 +1,8 @@
+{
+  "appId": "com.yassermuayed.ssr",
+  "appName": "Simon Memory Challenge",
+  "webDir": "dist",
+  "server": {
+    "androidScheme": "https"
+  }
+}

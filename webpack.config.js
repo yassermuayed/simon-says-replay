@@ -8,13 +8,12 @@ const TerserPlugin = require("terser-webpack-plugin");
 module.exports = {
   mode: "production",
   entry: {
-    "service-worker": "./src/service-worker",
     main: "./src/main.js",
+    "service-worker": "./src/service-worker",
   },
   output: {
     filename: "[name].js",
     path: path.resolve(__dirname, "dist"),
-    assetModuleFilename: "./assets/[name][ext]",
     clean: true,
   },
 
@@ -37,7 +36,7 @@ module.exports = {
     new CopyWebpackPlugin({
       patterns: [
         { from: "src/manifest.json", to: "" },
-        { from: "./src/assets/favicon", to: "favicon/" },
+        { from: "public", to: "public" },
       ],
     }),
   ],

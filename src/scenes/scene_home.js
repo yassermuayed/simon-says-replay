@@ -1,4 +1,3 @@
-import "../css/home.css";
 import { SceneManagerInstance, StateManagerInstance } from "../main.js";
 import { button, comment, cont } from "../components/blocks.js";
 import _Scene from "../engine/_scene";
@@ -13,7 +12,7 @@ export default class HomeScene extends _Scene {
     //   SceneManagerInstance.changeScene(new GameScene());
     // });
     let splashLogo = document.createElement("img");
-    splashLogo.src = "../assets/textlogo.png";
+    splashLogo.src = "../../public/text-logo.png";
     splashLogo.className = "home-logo";
     this.add(splashLogo);
 
@@ -23,7 +22,6 @@ export default class HomeScene extends _Scene {
       ),
       ["new-game-btn"]
     );
-
 
     this.add(
       cont([

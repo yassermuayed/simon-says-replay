@@ -9,7 +9,6 @@ export default class Scene {
     this.root = root;
     this.name = name;
     this.instance = root.appendChild(this.createSceneWindow());
-    this.kids = [];
   }
 
   /**
@@ -49,7 +48,6 @@ export default class Scene {
    */
   add(el, cl = []) {
     cl.forEach((c) => el.classList.add(c));
-    this.kids.push(el);
     this.instance.appendChild(el);
     return el;
   }

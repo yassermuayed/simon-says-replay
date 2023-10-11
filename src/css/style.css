@@ -1,6 +1,6 @@
 @font-face {
   font-family: "comic";
-  src: url("../assets/comicrelief-bold-webfont.woff2") format("woff2");
+  src: url("../../public/comicrelief-bold-webfont.woff2") format("woff2");
   font-weight: normal;
   font-style: normal;
 }
@@ -27,12 +27,6 @@
 }
 
 html {
-  background-color: green;
-}
-
-body {
-  height: 100dvh;
-  overflow: hidden;
   background: linear-gradient(
     135deg,
     var(--bg-100),
@@ -40,8 +34,12 @@ body {
     var(--bg-100)
   );
   color: whitesmoke;
-
   font-family: "comic";
+}
+
+body {
+  height: 100dvh;
+  overflow: hidden;
 }
 
 
@@ -52,9 +50,9 @@ body {
   border-radius: 5px;
   height: 95dvh;
   width: 95vw;
-  min-width: 279px;
+  min-width: 280px;
   max-width: 400px;
-  min-height: 600px;
+  min-height: 100dvh;
 
   display: flex;
   align-items: center;
@@ -145,3 +143,4 @@ body {
 .hidden {
   opacity: 0;
 }
+

@@ -1,83 +1,33 @@
-import "../css/splash.css";
-import _Scene from "../engine/_scene";
 import { SceneManagerInstance } from "../main";
-import { loading, button, comment } from "../components/blocks";
+import _Scene from "../engine/_scene";
+import { loading, button, comment, htm } from "../components/blocks";
 import HomeScene from "./scene_home";
-import loadingOperations from "../engine/loading-operations";
-
-import "../assets/splash-logo.png";
 
 export default class SplashScene extends _Scene {
-  loadingWidget;
-  loadingProgress;
-  loadingComplete;
-  // TODO loadingOperations is an array if functions that can be appended to from anywhere
-  operations;
   constructor() {
     super("Splash scene");
     console.log("========= splash scene constructor");
-    this.loadingComplete = false;
-    this.loadingProgress = 0;
-    this.operations = loadingOperations;
     this.add(comment("V2.0.0 Webpack build 4 Android 33"), ["build-number"]);
 
-    let splashLogo = document.createElement("img");
-    splashLogo.src = "../assets/splash-logo.png";
-    splashLogo.className = "splash-logo";
+    let splashLogo = htm("img", ["splash-logo"]);
+    splashLogo.src = "../../public/splash-logo.png";
     this.add(splashLogo);
 
     this.loadingWidget = this.add(loading());
-
-    console.log("Loading Widget : ", this.loadingWidget);
-    console.dir(this.loadingWidget);
-    this.startLoading();
-  }
-
-  requestFullscreen(element) {
-    // Check if the element supports fullscreen.
-    if (!element.requestFullscreen) {
-      return;
-    }
-
-    // Request fullscreen for the element.
-    element.requestFullscreen();
-  }
-
-  update(opName, completedOperations) {
-    // this.loadingWidget.innerHTML = `${this.loadingProgress * 100}%`;
-    this.loadingWidget.progress.style.width = `${this.loadingProgress * 100}%`;
-    let loadingPercentage = (this.loadingProgress * 100).toFixed(2);
-    this.loadingWidget.loadingText.innerText = ` ${loadingPercentage}% ${opName} (${completedOperations}/${this.operations.length}) (0KiB)`;
-    if (completedOperations >= this.operations.length) {
-      this.loadingComplete = true;
-    }
-
-    if (this.loadingComplete) {
-      // HACK Remove this to prevent changing scene directly
-      // setTimeout(() => {
-      //   SceneManagerInstance.changeScene(new HomeScene());
-      // });
-
-      this.loadingWidget.loadingText.innerText = ` 100% Loaded (${completedOperations}/${this.operations.length}) (0KiB)`;
+    setTimeout(() => {
+      this.loadingWidget.loadingText.innerText = `Loading Complete`;
       this.add(
         button("TAP TO START", () => {
           navigator.vibrate(100);
-          
           this.requestFullscreen(document.documentElement);
           SceneManagerInstance.changeScene(new HomeScene());
         }),
         ["splash-button"]
       );
-    }
+    }, 300);
   }
 
-  async startLoading() {
-    let completedOperations = 0;
-    this.operations.forEach((op) => {
-      op.execute();
-      completedOperations++;
-      this.loadingProgress = completedOperations / this.operations.length;
-      this.update(op, completedOperations);
-    });
+  requestFullscreen(element) {
+    element.requestFullscreen();
   }
 }

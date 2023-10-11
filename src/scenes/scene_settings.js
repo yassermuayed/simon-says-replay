@@ -4,6 +4,7 @@ import _Scene from "../engine/_scene";
 import { SceneManagerInstance, versionNumber } from "../main";
 import HomeScene from "./scene_home";
 import { comment, cont, button, htm } from "../components/blocks";
+
 export default class SettingsScene extends _Scene {
   constructor() {
     super("Settings scene");

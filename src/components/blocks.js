@@ -3,25 +3,10 @@ import "../css/blocks.css";
 import { StateManagerInstance } from "../main";
 import Block from "./block";
 
-import defaultIcon from "../assets/defaulticon.svg";
-import logoURL from "../assets/favicon/android-chrome-512x512.png";
-
 export function htm(type, classes = []) {
   let html = document.createElement(type);
   html.classList.add(...classes);
   return html;
-}
-
-export function gameLogo() {
-  let logo = document.createElement("div");
-  logo.classList.add("logo-image");
-
-  let image = document.createElement("img");
-  image.src = logoURL;
-  image.style.maxWidth = "20px";
-  logo.appendChild(image);
-
-  return logo;
 }
 
 export function redSquare() {
@@ -150,37 +135,6 @@ export function dialog(pText = "Default Paragraph Text", formActionCallBack) {
   });
   dialog.appendChild(form);
   return dialog;
-}
-
-export function changeNameFiled() {
-  let cnf = document.createElement("div");
-
-  const getValue = (vv) => {
-    console.log("get value funciton", vv);
-    StateManagerInstance.saveToLocalStorage("playerName", vv);
-    StateManagerInstance.syncVariablesWithLocalStorage();
-    paragraph.textContent = StateManagerInstance.playerName;
-  };
-
-  let thisDialog = dialog("Enter Name", getValue);
-  cnf.classList.add("change-name-filed");
-
-  let paragraph = document.createElement("p");
-  paragraph.textContent = StateManagerInstance.playerName;
-  cnf.appendChild(paragraph);
-
-  let button = document.createElement("button");
-  let buttonIcon = document.createElement("img");
-  buttonIcon.src = defaultIcon;
-  button.appendChild(buttonIcon);
-  button.addEventListener("click", () => {
-    console.log("form name pressed");
-    thisDialog.setAttribute("open", "true");
-  });
-  cnf.appendChild(button);
-
-  cnf.appendChild(thisDialog);
-  return cnf;
 }
 
 export function gameOverDialog(message = "Game Over", score = 0, callBack, callBack2 = () => {}) {
