@@ -11,7 +11,7 @@ import "./css/game.css";
 import "./components/confetti";
 
 export const versionNumber = "2.0.0";
-
+export const buildNumber = "5";
 import SceneManager from "./engine/scene-manager";
 import StateManager from "./engine/state-manager";
 
