@@ -1,5 +1,3 @@
-
-
 import {
   comment,
   cont,
@@ -35,11 +33,14 @@ export default class GameScene extends _Scene {
   activeSequence;
   constructor() {
     super("Game Scene");
+
     console.log("=========== Game Scene");
-    console.log("Elements in scene", this.kids.length, this.kids);
+
     this.widgetInstance = new Widget();
     this.wi = this.add(this.widgetInstance);
     this.trafficLight = this.add(trafficLight());
+
+
     this.score = document.createElement("div");
     this.score.innerText = this.level;
     this.score.classList.add("score");
@@ -211,9 +212,9 @@ export default class GameScene extends _Scene {
 
   gameOver() {
     console.log("gameOver state");
-    // this.changeState(this.gs.start);
-
     if (this.level - 1 > StateManagerInstance.personalBest) {
+   
+      this.playWinSound();
       confetti();
       this.add(
         gameOverDialog(
@@ -231,9 +232,23 @@ export default class GameScene extends _Scene {
       StateManagerInstance.saveToLocalStorage("personalBest", this.level - 1);
       StateManagerInstance.syncVariablesWithLocalStorage();
     } else {
+      let endPhrases = ["Nailed It!",
+      "You Rocked It!",
+      "Awesome Job!",
+      "Top-Notch Play!",
+      "Epic Finish!",
+      "You're a Pro!",
+      "Well Done, Champ!",
+      "Game Over, You Rule!",
+      "High-Five Moment!",
+      "Smashin' Success!",
+    ]
+    // pick a random phrase
+    let randomPhrase = endPhrases[Math.floor(Math.random() * endPhrases.length)];
+      this.playWinSound();
       this.add(
         gameOverDialog(
-          "Game Over",
+          randomPhrase  ,
           this.level - 1,
           () => {
             SceneManagerInstance.changeScene(new GameScene());
@@ -245,6 +260,17 @@ export default class GameScene extends _Scene {
       );
     }
     this.wi.canUserInteract = false;
+  }
+  playWinSound() {
+    let audioContext = new AudioContext();
+    const oscillator = audioContext.createOscillator();
+    oscillator.frequency.setValueAtTime(100, audioContext.currentTime);
+    oscillator.connect(audioContext.destination);
+
+    oscillator.start();
+    setTimeout(() => {
+      oscillator.stop();
+    }, 300);
   }
 
   highScore() {

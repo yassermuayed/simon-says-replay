@@ -73,23 +73,23 @@ export default class Widget {
 
       switch (qClassName) {
         case "q1":
-          multiplier = 1;
-          break;
-        case "q2":
           multiplier = 1.2;
           break;
+        case "q2":
+          multiplier = 1.4;
+          break;
         case "q3":
-          multiplier = 1.3;
+          multiplier = 1.6;
           break;
         case "q4":
-          multiplier = 1.4;
+          multiplier = 1.8;
           break;
       }
 
       // Create a sine wave oscillator.
       const oscillator = this.audioContext.createOscillator();
       oscillator.frequency.setValueAtTime(
-        540 * multiplier,
+        260 * multiplier,
         this.audioContext.currentTime
       );
       oscillator.connect(this.audioContext.destination);
@@ -97,7 +97,7 @@ export default class Widget {
       oscillator.start();
       setTimeout(() => {
         oscillator.stop();
-      }, 100);
+      }, 140);
     };
     generateAudio();
 

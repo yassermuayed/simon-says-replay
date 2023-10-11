@@ -43,23 +43,6 @@ export function button(
   return btn;
 }
 
-export function iconButton(
-  svgIcon,
-  callBack = () => {
-    console.log("Default Action");
-  }
-) {
-  let ib = document.createElement("button");
-  ib.classList.add("icon-button");
-
-  let icon = document.createElement("img");
-  icon.src = svgIcon;
-  ib.appendChild(icon);
-
-  ib.addEventListener("click", () => callBack());
-  return ib;
-}
-
 export function comment(text = "Default comment", classes = []) {
   let comment = document.createElement("div");
   comment.appendChild(document.createTextNode(text));

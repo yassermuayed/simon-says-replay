@@ -25,13 +25,14 @@ export default class SettingsScene extends _Scene {
     this.add(htm("br"));
     let IGLink = htm("a");
     this.add(comment("Created by Yasser Muayed"));
+    this.add(comment("Send feedback or"));
     IGLink.href = "https://www.instagram.com/yassermuayed/";
     IGLink.setAttribute("target", "_blank");
     IGLink.appendChild(document.createTextNode("Follow me on IG"));
     this.add(IGLink);
     this.add(htm("br"));
     this.add(
-      button("Reset Your Progress ", async () => {
+      button("Reset Game ", async () => {
         await localStorage.clear();
         location.reload();
       })

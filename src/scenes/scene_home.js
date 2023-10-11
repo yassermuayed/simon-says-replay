@@ -3,7 +3,7 @@ import { button, comment, cont } from "../components/blocks.js";
 import _Scene from "../engine/_scene";
 import GameScene from "./scene_game";
 import SettingsScene from "./scene_settings";
-import smallLogoUTL from "../../public/text-logo.png"
+import smallLogoUTL from "../../public/text-logo.webp";
 export default class HomeScene extends _Scene {
   constructor() {
     super("home scene");
@@ -25,8 +25,8 @@ export default class HomeScene extends _Scene {
 
     this.add(
       cont([
+        this.add(comment("\u2606 High Score \u2606")),
         this.add(comment(StateManagerInstance.personalBest)),
-        this.add(comment("High Score")),
       ]),
       ["high-score"]
     );
@@ -48,7 +48,7 @@ export default class HomeScene extends _Scene {
     this.add(
       cont([
         shareBtn,
-        button("Settings", () =>
+        button("About", () =>
           SceneManagerInstance.changeScene(new SettingsScene())
         ),
       ]),

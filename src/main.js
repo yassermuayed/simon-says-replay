@@ -10,7 +10,7 @@ import "./css/game.css";
 
 import "./components/confetti";
 
-export const versionNumber = "2.0.0";
+export const versionNumber = "2.0.1";
 export const buildNumber = "6";
 import SceneManager from "./engine/scene-manager";
 import StateManager from "./engine/state-manager";

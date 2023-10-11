@@ -1,14 +1,14 @@
-import { SceneManagerInstance, buildNumber } from "../main";
+import { SceneManagerInstance, buildNumber, versionNumber } from "../main";
 import _Scene from "../engine/_scene";
 import { loading, button, comment, htm } from "../components/blocks";
 import HomeScene from "./scene_home";
-import splashLogoURL from "../../public/splash-logo.png"
+import splashLogoURL from "../../public/splash-logo.webp";
 
 export default class SplashScene extends _Scene {
   constructor() {
     super("Splash scene");
     console.log("========= splash scene constructor");
-    this.add(comment(`V2.0.0 Webpack build ${buildNumber} Android 33`), ["build-number"]);
+    this.add(comment(`V ${versionNumber} b${buildNumber}`), ["build-number"]);
 
     let splashLogo = htm("img", ["splash-logo"]);
     splashLogo.src = splashLogoURL;
@@ -18,6 +18,7 @@ export default class SplashScene extends _Scene {
     setTimeout(() => {
       this.loadingWidget.loadingText.innerText = `Loading Complete`;
       this.add(
+       
         button("TAP TO START", () => {
           navigator.vibrate(100);
           this.requestFullscreen(document.documentElement);
@@ -29,6 +30,7 @@ export default class SplashScene extends _Scene {
   }
 
   requestFullscreen(element) {
-    element.requestFullscreen();
+    // TODO uncomment
+  // element.requestFullscreen();
   }
 }

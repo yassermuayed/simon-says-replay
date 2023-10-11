@@ -11,7 +11,8 @@
   top: 10%;
   text-align: center;
   font-size: 3rem;
-  max-width: 80%;
+  width: 300px;
+  max-width: 80vw;
 }
 
 .splash-button {
@@ -23,7 +24,7 @@
   font-family: comic;
   animation: blink 2s linear infinite;
   position: absolute;
-  top: 80%;
+  top: 75%;
 }
 
 @keyframes blink {
@@ -50,7 +51,7 @@
   max-width: 320px;
   height: 30px;
   position: absolute;
-  top: 70%;
+  top: 65%;
   transform: translateY(-50px);
   border: rgba(255, 255, 0, 0.102) 4px solid;
 }
