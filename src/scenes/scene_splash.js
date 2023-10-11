@@ -2,6 +2,7 @@ import { SceneManagerInstance, buildNumber } from "../main";
 import _Scene from "../engine/_scene";
 import { loading, button, comment, htm } from "../components/blocks";
 import HomeScene from "./scene_home";
+import splashLogoURL from "../../public/splash-logo.png"
 
 export default class SplashScene extends _Scene {
   constructor() {
@@ -10,7 +11,7 @@ export default class SplashScene extends _Scene {
     this.add(comment(`V2.0.0 Webpack build ${buildNumber} Android 33`), ["build-number"]);
 
     let splashLogo = htm("img", ["splash-logo"]);
-    splashLogo.src = "../../public/splash-logo.png";
+    splashLogo.src = splashLogoURL;
     this.add(splashLogo);
 
     this.loadingWidget = this.add(loading());

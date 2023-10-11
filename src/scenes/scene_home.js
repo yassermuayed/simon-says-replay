@@ -3,7 +3,7 @@ import { button, comment, cont } from "../components/blocks.js";
 import _Scene from "../engine/_scene";
 import GameScene from "./scene_game";
 import SettingsScene from "./scene_settings";
-
+import smallLogoUTL from "../../public/text-logo.png"
 export default class HomeScene extends _Scene {
   constructor() {
     super("home scene");
@@ -12,7 +12,7 @@ export default class HomeScene extends _Scene {
     //   SceneManagerInstance.changeScene(new GameScene());
     // });
     let splashLogo = document.createElement("img");
-    splashLogo.src = "../../public/text-logo.png";
+    splashLogo.src = smallLogoUTL;
     splashLogo.className = "home-logo";
     this.add(splashLogo);
 
